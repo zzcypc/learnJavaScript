@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#square {
+				height: 100px;
+				width: 100px;
+				margin: 10px auto 0 auto;
+				background-color: greenyellow;
+			}
+			
+			#control {
+				text-align: center;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="control">
+			<button>变宽</button>
+			<button>变高</button>
+			<button>变色</button>
+			<button>隐藏</button>
+			<button>显示</button>
+		</div>
+		<div id="square"></div>
+	</body>
+	<script>
+		var changeStyle=function(elem,arr,value){
+			elem.style[arr]=value;
+		};
+		var oBtn=document.getElementById("control").getElementsByTagName("button");
+		var oDiv=document.getElementById("square");
+		var oArr=["width","height","background","display","display"];
+		var oVal=["200px","200px","red","none","block"];
+		
+		window.onload=function(){
+			for(var i=0;i<=oBtn.length;i++){
+				oBtn[i].index=i;//此处有疑问
+				oBtn[i].onclick=function(){
+					changeStyle(oDiv,oArr[this.index],oVal[this.index]);
+				}
+			}
+		};
+	</script>
+
+</html>

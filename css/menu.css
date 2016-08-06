@@ -1,0 +1,30 @@
+*{
+	margin: 0;
+	padding: 0;
+}
+ul,li{
+	list-style: none;
+	border-collapse:collapse;
+}
+.menu{
+	width: 200px;
+	margin: 50px auto;
+	font-size: 12px;
+}
+#select{
+	display: block;
+	width: 150px;
+	height: 24px;
+	line-height: 24px;
+	border: 1px solid #333333;
+}
+#items{
+	width: 150px;
+	border: 1px solid #333333;
+	display: none;
+}
+
+#items li{
+	height: 24px;
+	line-height: 24px;
+}

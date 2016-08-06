@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<link rel="stylesheet" href="css/menu.css" />
+
+	<body>
+		<div class="menu">
+			<li id="select">请选择分类</li>
+			<ul id="items">
+				<li>ASP开发</li>
+				<li>.NET开发</li>
+				<li>PHP开发</li>
+				<li>JavaScript开发</li>
+				<li>Java开发</li>
+			</ul>
+		</div>
+	</body>
+	<script>
+		var menu = document.getElementsByClassName('menu')[0];
+		var items = document.getElementById('items');
+		var title = document.getElementById('select');
+		var index = -1;
+		menu.onclick = function() {
+			items.style.display = (items.style.display == "block") ? "none" : "block";
+		};
+		var details = items.getElementsByTagName('li');
+		for (var i = 0; i < details.length; i++) {
+			details[i].onmousemove = function() {
+				this.style.background = "rgb(204,204,204)";
+			};
+			details[i].onmouseleave = function() {
+				this.style.background = "none";
+			};
+			details[i].onclick = function() {
+				title.innerHTML = this.innerHTML;
+			};
+		}
+		document.onkeydown = function(e) {
+			if(!items.style.display||items.style.display=="none"){
+				return;
+			}
+				
+			if (e.keyCode == 40) {
+				index=(index+1)%5;
+				details[index].style.background = "rgb(204,204,204)";
+				details[(index-1+5)%5].style.background = "none";
+			}
+			
+			if (e.keyCode == 38) {
+				if(index<0){
+					index=0;
+				}
+				index=(index-1+5)%5;
+				details[index].style.background = "rgb(204,204,204)";				
+				details[(index+1)%5].style.background = "none";
+			}
+			if (index>=0&&e.keyCode == 13) {
+				title.innerHTML = details[index].innerHTML;
+				details[index].style.background = "none";
+				index=-1;
+				items.style.display="none";
+			}
+		}
+	</script>
+
+</html>

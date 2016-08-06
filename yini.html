@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title> new document </title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf8"/>
+    <script type="text/javascript">
+
+        window.onload = function(){
+
+            // 鼠标移动改变背景,可以通过给每行绑定鼠标移上事件和鼠标移除事件来改变所在行背景色。
+            var otr=document.getElementsByTagName("tr");
+
+            for(var i=0;i<otr.length;i++){
+                otr[i].onmouseover=function(){this.style.backgroundColor="#f2f2f2";};
+                otr[i].onmouseout=function(){this.style.backgroundColor="#fff";};
+
+            };
+
+            //   function del(obj){
+            //      obj.parentNode.parentNode.removeChild();
+            //  }
+            function add(){
+                alert();
+                var or=document.createElement("tr");
+                var od=[];
+                for(var i=0;i<3;i++){
+                    od[i]=document.createElement("td");
+                }
+                var oa=document.createElement("a");
+                oa.href="javascript:del(this)";
+                oa.innerHTML="删除";
+                od[0].innerHTML="xh003";
+                od[1].innerHTML="dingidng";
+                od[2].appendChild(oa);
+            for(var i=0;i<3;i++){
+                or.appendChild(od[i]);
+            }
+            var otable=document.getElementsByTagName("table")[0];
+            otable.appendChild(or);
+
+        }
+        }
+
+
+
+
+
+
+    </script>
+</head>
+<body>
+<table border="1" width="50%" id="table">
+    <tr>
+        <th>学号</th>
+        <th>姓名</th>
+        <th>操作</th>
+    </tr>
+
+    <tr>
+        <td>xh001</td>
+        <td>王小明</td>
+        <td><a href="javascript:del(this)" >删除</a></td>   <!--在删除按钮上添加点击事件  -->
+    </tr>
+
+    <tr>
+        <td>xh002</td>
+        <td>刘小芳</td>
+        <td><a href="javascript:;" >删除</a></td>   <!--在删除按钮上添加点击事件  -->
+    </tr>
+
+</table>
+<input type="button" value="添加一行" onclick="add()" />
+</body>
+</html>

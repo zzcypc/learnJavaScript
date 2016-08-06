@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<title> new document </title>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<style>
+			* {
+				margin: 0;
+				padding: 0;
+			}
+			
+			table,
+			tr,
+			td,
+			th {
+				border: 1px solid;
+				border-collapse: collapse;
+			}
+		</style>
+		<script type="text/javascript">
+			window.onload = function() {
+					// 鼠标移动改变背景,可以通过给每行绑定鼠标移上事件和鼠标移除事件来改变所在行背景色。
+					var itemList = document.getElementsByTagName("tr");
+					for (var i = 1; i < itemList.length; i++) {
+						itemList[i].onmouseover = function() {
+							this.style.backgroundColor = "lightblue";
+						};
+						itemList[i].onmouseout = function() {
+							this.removeAttribute("style");
+						};
+					}
+					var stunum = 3;
+					var but = document.getElementsByTagName("input")[0];
+					but.onclick = function() {
+						addlist("xh" + stunum, "粽子");
+						stunum++;
+					}
+					var dellist = document.getElementsByTagName("a");
+					for (var i = 0; i < dellist.length; i++) {
+						dellist[i].onclick = function() {
+							delitem(this);
+						}
+					}
+				}
+				// 编写一个函数，供添加按钮调用，动态在表格的最后一行添加子节点；
+			function addlist(num, name) {
+				var newitem = document.createElement("tr");
+				var td1 = document.createElement("td");
+				td1.innerHTML = num;
+				var td2 = document.createElement("td");
+				td2.innerHTML = name;
+				var td3 = document.createElement("td");
+				var alink=document.createElement("a");
+				alink.setAttribute("href","javascript:;");
+				alink.innerHTML = "删除";
+				newitem.appendChild(td1);
+				newitem.appendChild(td2);
+				newitem.appendChild(td3);
+				td3.appendChild(alink);
+				document.getElementsByTagName("tbody")[0].appendChild(newitem);
+				alink.onclick = function() {
+					delitem(this);
+				}
+				newitem.onmouseover = function() {
+					this.style.backgroundColor = "lightblue";
+				};
+				newitem.onmouseout = function() {
+					this.removeAttribute("style");
+				};
+			}
+			// 创建删除函数
+			function delitem(obj) {
+				obj.parentElement.parentElement.parentElement.removeChild(obj.parentElement.parentElement);
+//				alert(obj.parentElement.parentElement.parentElement.tagName);
+			}
+		</script>
+	</head>
+
+	<body>
+		<table width="50%" id="table">
+			<tr>
+				<th>学号</th>
+				<th>姓名</th>
+				<th>操作</th>
+			</tr>
+
+			<tr>
+				<td>xh001</td>
+				<td>王小明</td>
+				<td><a href="javascript:;">删除</a></td>
+				<!--在删除按钮上添加点击事件  -->
+			</tr>
+
+			<tr>
+				<td>xh002</td>
+				<td>刘小芳</td>
+				<td><a href="javascript:;">删除</a></td>
+				<!--在删除按钮上添加点击事件  -->
+			</tr>
+
+		</table>
+		<input type="button" value="添加一行" />
+		<!--在添加按钮上添加点击事件  -->
+	</body>
+
+</html>

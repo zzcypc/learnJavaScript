@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <title>浏览器对象</title>  
+  <meta http-equiv="Content-Type" content="text/html; charset=gkb"/>   
+ </head>
+ <body>
+  <!--先编写好网页布局-->
+  <strong>操作成功</strong>
+  <p><strong><span id="second">5</span>秒后回到主页 </strong><a href="" onclick="myback()">返回</a></p>
+  
+ 
+  <script type="text/javascript">  
+ 
+   //获取显示秒数的元素，通过定时器来更改秒数。
+    var sec=document.getElementById("second");
+    function time(){
+    	sec.innerHTML--;
+    	if(sec.innerHTML<=0){
+    		clearInterval(id);
+    		window.history.go(-1);
+    	}
+    }
+    function myback(){
+    	window.event.returnValue = false;
+    	window.history.go(-1);
+    }
+    var id=setInterval(time,1000);
+   //通过window的location和history对象来控制网页的跳转。
+   
+ </script> 
+</body>
+</html>
